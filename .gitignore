@@ -1,0 +1,12 @@
+/node_modules
+/sign
+/dist
+/build
+/.vscode
+
+# generated from src/demo/*.js by scripts/gen-demos.js
+/src/common/demos.gen.js
+
+.DS_Store
+Thumbs.db
+*.log

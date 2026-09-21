@@ -1,0 +1,22 @@
+{
+  "name": "vela-runner",
+  "version": "0.1.0",
+  "description": "Xiaomi Vela quick app that runs arbitrary JS snippets and shows the result or error",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "scripts": {
+    "gen-demos": "node scripts/gen-demos.js",
+    "prestart": "npm run gen-demos",
+    "start": "aiot start --watch",
+    "prebuild": "npm run gen-demos",
+    "build": "aiot build",
+    "prerelease": "npm run gen-demos",
+    "release": "aiot release",
+    "lint": "eslint --format codeframe --fix --ext .ux,.js src/"
+  },
+  "devDependencies": {
+    "@aiot-toolkit/jsc": "^1.0.3",
+    "aiot-toolkit": "^2.0.5"
+  }
+}

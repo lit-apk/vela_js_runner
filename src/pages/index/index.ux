@@ -1,0 +1,96 @@
+<template>
+  <div class="page">
+    <scroll class="list" scroll-y="true" bounces="true">
+      <text class="title">JS Runner</text>
+      <text class="subtitle">{{ demos.length }} demo file(s) in src/demo</text>
+
+      <text class="empty" if="{{ demos.length === 0 }}">
+        No demos found. Add .js files under src/demo and rebuild.
+      </text>
+
+      <input
+        class="demo-button"
+        type="button"
+        for="{{ demos }}"
+        value="{{ $item.file }}"
+        onclick="runDemo($item)"
+      />
+    </scroll>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import demos from "../../common/demos.gen.js"
+
+export default {
+  private: {
+    demos: []
+  },
+
+  onInit() {
+    this.demos = demos.map((d) => ({name: d.name, file: d.file}))
+  },
+
+  runDemo(item) {
+    if (!item || !item.name) return
+    router.push({
+      uri: "/pages/run",
+      params: {demo: item.name}
+    })
+  }
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 40px 24px 40px;
+}
+
+.title {
+  width: 100%;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+.empty {
+  width: 100%;
+  font-size: 22px;
+  text-align: center;
+  color: #888888;
+  margin-top: 40px;
+}
+
+.demo-button {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 12px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 16px;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: left;
+  background-color: #292929;
+}
+</style>

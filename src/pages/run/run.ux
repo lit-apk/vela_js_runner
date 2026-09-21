@@ -1,0 +1,224 @@
+<template>
+  <div class="page">
+    <scroll class="output" scroll-y="true" bounces="true">
+      <text class="title">{{ demo }}.js</text>
+      <text class="status">{{ statusText }}</text>
+
+      <div class="card" if="{{ logs.length > 0 }}">
+        <text class="card-title">console</text>
+        <text class="{{ 'log log-' + $item.level }}" for="{{ logs }}">{{ $item.text }}</text>
+      </div>
+
+      <div class="card" if="{{ finished && !hasError }}">
+        <text class="card-title">result</text>
+        <text class="log value">{{ value }}</text>
+      </div>
+
+      <div class="card card-error" if="{{ hasError }}">
+        <text class="card-title error-title">error</text>
+        <text class="log error">{{ error }}</text>
+      </div>
+
+      <div class="actions">
+        <input class="btn btn-back" type="button" value="Back" onclick="goBack" />
+        <input class="btn btn-rerun" type="button" value="Rerun" onclick="rerun" />
+      </div>
+    </scroll>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import demos from "../../common/demos.gen.js"
+import {runCode} from "../../common/runner.js"
+
+export default {
+  // Router params must be declared under `protected` to be received.
+  protected: {
+    demo: ""
+  },
+
+  private: {
+    statusText: "",
+    logs: [],
+    value: "",
+    error: "",
+    hasError: false,
+    finished: false,
+    running: false
+  },
+
+  onInit() {
+    this.execute()
+  },
+
+  findCode() {
+    const match = demos.find((d) => d.name === this.demo)
+    return match ? match.code : null
+  },
+
+  execute() {
+    if (this.running) return
+    this.running = true
+    this.finished = false
+    this.hasError = false
+    this.logs = []
+    this.value = ""
+    this.error = ""
+    this.statusText = "Running..."
+
+    const code = this.findCode()
+    if (code === null) {
+      this.showError(`Demo '${this.demo}' not found`)
+      return
+    }
+
+    runCode(code).then(
+      (res) => this.showResult(res),
+      (e) => this.showError("runner failure: " + (e && e.message ? e.message : e))
+    )
+  },
+
+  showResult(res) {
+    this.logs = res.logs.slice()
+    this.hasError = !res.ok
+    this.value = res.ok ? res.value : ""
+    this.error = res.ok ? "" : res.error
+    this.statusText = `${res.ok ? "OK" : "FAILED"} in ${res.durationMs} ms`
+    this.finished = true
+    this.running = false
+    console.log(`[runner] ${this.demo}: ${this.statusText}`)
+  },
+
+  showError(message) {
+    this.hasError = true
+    this.error = message
+    this.statusText = "FAILED"
+    this.finished = true
+    this.running = false
+  },
+
+  rerun() {
+    this.execute()
+  },
+
+  goBack() {
+    router.back()
+  },
+
+  onBackPress() {
+    router.back()
+    return true
+  }
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+.output {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 40px 20px 40px;
+}
+
+.title {
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.status {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: #888888;
+  margin-bottom: 16px;
+}
+
+.card {
+  width: 100%;
+  flex-direction: column;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background-color: #1e1e1e;
+}
+
+.card-error {
+  background-color: #2a1a1a;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #888888;
+  margin-bottom: 8px;
+}
+
+.error-title {
+  color: #f48771;
+}
+
+.log {
+  width: 100%;
+  font-size: 22px;
+  color: #dddddd;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 4px;
+}
+
+.log-warn {
+  color: #ffb84d;
+}
+
+.log-error {
+  color: #f48771;
+}
+
+.log-debug,
+.log-info {
+  color: #9cdcfe;
+}
+
+.value {
+  color: #9cdcfe;
+}
+
+.error {
+  color: #f48771;
+}
+
+.actions {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.btn {
+  width: 140px;
+  height: 64px;
+  border-radius: 32px;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.btn-back {
+  background-color: #666666;
+}
+
+.btn-rerun {
+  background-color: #0faeff;
+}
+</style>

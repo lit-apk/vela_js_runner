@@ -1,0 +1,46 @@
+{
+  "package": "top.lighilit.vela_runner",
+  "name": "JS Runner",
+  "versionName": "0.1.0",
+  "versionCode": 1,
+  "minPlatformVersion": 1200,
+  "icon": "/common/logo.png",
+  "deviceTypeList": ["watch"],
+  "features": [
+    {"name": "system.router"},
+    {"name": "system.app"},
+    {"name": "system.device"},
+    {"name": "system.configuration"},
+    {"name": "system.storage"},
+    {"name": "system.file"},
+    {"name": "system.network"},
+    {"name": "system.battery"},
+    {"name": "system.brightness"},
+    {"name": "system.vibrator"},
+    {"name": "system.sensor"},
+    {"name": "system.prompt"},
+    {"name": "system.fetch"},
+    {"name": "system.geolocation"},
+    {"name": "system.event"}
+  ],
+  "permissions": [
+    {"name": "hapjs.permission.LOCATION"},
+    {"name": "hapjs.permission.DEVICE_INFO"}
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": "device-width"
+  },
+  "router": {
+    "entry": "pages/index",
+    "pages": {
+      "pages/index": {
+        "component": "index"
+      },
+      "pages/run": {
+        "component": "run"
+      }
+    }
+  },
+  "minAPILevel": 2
+}

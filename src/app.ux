@@ -1,0 +1,10 @@
+<script>
+export default {
+  onCreate() {
+    console.log("[runner] app created")
+  },
+  onDestroy() {
+    console.log("[runner] app destroyed")
+  }
+}
+</script>
