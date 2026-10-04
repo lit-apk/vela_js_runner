@@ -1,0 +1,63 @@
+name: Release watch RPK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      KEYSTORE_PASSWORD: ${{ secrets.storePassword }}
+      KEY_PASSWORD: ${{ secrets.keyPassword }}
+      KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+    steps:
+      - name: Check out application
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Configure PEM signing files
+        run: |
+          mkdir -p sign
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > sign/release.keystore
+          keytool -importkeystore \
+            -srckeystore sign/release.keystore \
+            -srcstorepass "$KEYSTORE_PASSWORD" \
+            -srckeypass "$KEY_PASSWORD" \
+            -srcalias data-sync \
+            -destkeystore sign/release.p12 \
+            -deststoretype PKCS12 \
+            -deststorepass "$KEYSTORE_PASSWORD" \
+            -destkeypass "$KEY_PASSWORD" \
+            -noprompt
+          openssl pkcs12 -in sign/release.p12 -passin "pass:$KEYSTORE_PASSWORD" -nocerts -nodes -out sign/private.pem
+          openssl pkcs12 -in sign/release.p12 -passin "pass:$KEYSTORE_PASSWORD" -clcerts -nokeys -out sign/certificate.pem
+          mkdir -p sign/release
+          mv sign/private.pem sign/certificate.pem sign/release/
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build signed RPK
+        run: npm run release
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          artifact=$(find dist -maxdepth 1 -type f -name '*.rpk' -print -quit)
+          test -n "$artifact"
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes \
+            "$artifact"
+
