@@ -1,0 +1,453 @@
+<template>
+  <div class="page">
+    <div class="toolbar">
+      <input class="tool grey" type="button" value="‹" onclick="goBack" />
+      <input class="tool grey" type="button" value="×" onclick="clearCode" />
+      <input class="tool blue" type="button" value="▶" onclick="runCode" />
+    </div>
+
+    <scroll class="code-scroll" scroll-y="true" bounces="true">
+      <div class="code-frame">
+        <div class="code-box" onclick="toggleKeyboard">
+        <div class="code-line">
+          <text class="code-cell" value="{{ d1_1 }}"></text>
+          <text class="code-cell" value="{{ d1_2 }}"></text>
+          <text class="code-cell" value="{{ d1_3 }}"></text>
+          <text class="code-cell" value="{{ d1_4 }}"></text>
+          <text class="code-cell" value="{{ d1_5 }}"></text>
+          <text class="code-cell" value="{{ d1_6 }}"></text>
+          <text class="code-cell" value="{{ d1_7 }}"></text>
+          <text class="code-cell" value="{{ d1_8 }}"></text>
+          <text class="code-cell" value="{{ d1_9 }}"></text>
+          <text class="code-cell" value="{{ d1_10 }}"></text>
+          <text class="code-cell" value="{{ d1_11 }}"></text>
+          <text class="code-cell" value="{{ d1_12 }}"></text>
+          <text class="code-cell" value="{{ d1_13 }}"></text>
+          <text class="code-cell" value="{{ d1_14 }}"></text>
+          <text class="code-cell" value="{{ d1_15 }}"></text>
+          <text class="code-cell" value="{{ d1_16 }}"></text>
+          <text class="code-cell" value="{{ d1_17 }}"></text>
+          <text class="code-cell" value="{{ d1_18 }}"></text>
+          <text class="code-cell" value="{{ d1_19 }}"></text>
+          <text class="code-cell" value="{{ d1_20 }}"></text>
+        </div>
+        <div class="code-line">
+          <text class="code-cell" value="{{ d2_1 }}"></text>
+          <text class="code-cell" value="{{ d2_2 }}"></text>
+          <text class="code-cell" value="{{ d2_3 }}"></text>
+          <text class="code-cell" value="{{ d2_4 }}"></text>
+          <text class="code-cell" value="{{ d2_5 }}"></text>
+          <text class="code-cell" value="{{ d2_6 }}"></text>
+          <text class="code-cell" value="{{ d2_7 }}"></text>
+          <text class="code-cell" value="{{ d2_8 }}"></text>
+          <text class="code-cell" value="{{ d2_9 }}"></text>
+          <text class="code-cell" value="{{ d2_10 }}"></text>
+          <text class="code-cell" value="{{ d2_11 }}"></text>
+          <text class="code-cell" value="{{ d2_12 }}"></text>
+          <text class="code-cell" value="{{ d2_13 }}"></text>
+          <text class="code-cell" value="{{ d2_14 }}"></text>
+          <text class="code-cell" value="{{ d2_15 }}"></text>
+          <text class="code-cell" value="{{ d2_16 }}"></text>
+          <text class="code-cell" value="{{ d2_17 }}"></text>
+          <text class="code-cell" value="{{ d2_18 }}"></text>
+          <text class="code-cell" value="{{ d2_19 }}"></text>
+          <text class="code-cell" value="{{ d2_20 }}"></text>
+        </div>
+        <div class="code-line">
+          <text class="code-cell" value="{{ d3_1 }}"></text>
+          <text class="code-cell" value="{{ d3_2 }}"></text>
+          <text class="code-cell" value="{{ d3_3 }}"></text>
+          <text class="code-cell" value="{{ d3_4 }}"></text>
+          <text class="code-cell" value="{{ d3_5 }}"></text>
+          <text class="code-cell" value="{{ d3_6 }}"></text>
+          <text class="code-cell" value="{{ d3_7 }}"></text>
+          <text class="code-cell" value="{{ d3_8 }}"></text>
+          <text class="code-cell" value="{{ d3_9 }}"></text>
+          <text class="code-cell" value="{{ d3_10 }}"></text>
+          <text class="code-cell" value="{{ d3_11 }}"></text>
+          <text class="code-cell" value="{{ d3_12 }}"></text>
+          <text class="code-cell" value="{{ d3_13 }}"></text>
+          <text class="code-cell" value="{{ d3_14 }}"></text>
+          <text class="code-cell" value="{{ d3_15 }}"></text>
+          <text class="code-cell" value="{{ d3_16 }}"></text>
+          <text class="code-cell" value="{{ d3_17 }}"></text>
+          <text class="code-cell" value="{{ d3_18 }}"></text>
+          <text class="code-cell" value="{{ d3_19 }}"></text>
+          <text class="code-cell" value="{{ d3_20 }}"></text>
+        </div>
+        <div class="code-line">
+          <text class="code-cell" value="{{ d4_1 }}"></text>
+          <text class="code-cell" value="{{ d4_2 }}"></text>
+          <text class="code-cell" value="{{ d4_3 }}"></text>
+          <text class="code-cell" value="{{ d4_4 }}"></text>
+          <text class="code-cell" value="{{ d4_5 }}"></text>
+          <text class="code-cell" value="{{ d4_6 }}"></text>
+          <text class="code-cell" value="{{ d4_7 }}"></text>
+          <text class="code-cell" value="{{ d4_8 }}"></text>
+          <text class="code-cell" value="{{ d4_9 }}"></text>
+          <text class="code-cell" value="{{ d4_10 }}"></text>
+          <text class="code-cell" value="{{ d4_11 }}"></text>
+          <text class="code-cell" value="{{ d4_12 }}"></text>
+          <text class="code-cell" value="{{ d4_13 }}"></text>
+          <text class="code-cell" value="{{ d4_14 }}"></text>
+          <text class="code-cell" value="{{ d4_15 }}"></text>
+          <text class="code-cell" value="{{ d4_16 }}"></text>
+          <text class="code-cell" value="{{ d4_17 }}"></text>
+          <text class="code-cell" value="{{ d4_18 }}"></text>
+          <text class="code-cell" value="{{ d4_19 }}"></text>
+          <text class="code-cell" value="{{ d4_20 }}"></text>
+        </div>
+        <div class="code-line">
+          <text class="code-cell" value="{{ d5_1 }}"></text>
+          <text class="code-cell" value="{{ d5_2 }}"></text>
+          <text class="code-cell" value="{{ d5_3 }}"></text>
+          <text class="code-cell" value="{{ d5_4 }}"></text>
+          <text class="code-cell" value="{{ d5_5 }}"></text>
+          <text class="code-cell" value="{{ d5_6 }}"></text>
+          <text class="code-cell" value="{{ d5_7 }}"></text>
+          <text class="code-cell" value="{{ d5_8 }}"></text>
+          <text class="code-cell" value="{{ d5_9 }}"></text>
+          <text class="code-cell" value="{{ d5_10 }}"></text>
+          <text class="code-cell" value="{{ d5_11 }}"></text>
+          <text class="code-cell" value="{{ d5_12 }}"></text>
+          <text class="code-cell" value="{{ d5_13 }}"></text>
+          <text class="code-cell" value="{{ d5_14 }}"></text>
+          <text class="code-cell" value="{{ d5_15 }}"></text>
+          <text class="code-cell" value="{{ d5_16 }}"></text>
+          <text class="code-cell" value="{{ d5_17 }}"></text>
+          <text class="code-cell" value="{{ d5_18 }}"></text>
+          <text class="code-cell" value="{{ d5_19 }}"></text>
+          <text class="code-cell" value="{{ d5_20 }}"></text>
+        </div>
+        </div>
+      </div>
+    </scroll>
+
+    <div class="keyboard" if="{{ keyboardOpen }}">
+      <div class="mode-row">
+        <input class="mode" type="button" value="abc" onclick="setMode('abc')" />
+        <input class="mode" type="button" value="ABC" onclick="setMode('ABC')" />
+        <input class="mode" type="button" value="123" onclick="setMode('num')" />
+        <input class="mode" type="button" value="{}" onclick="setMode('sym')" />
+        <input class="mode" type="button" value="kw" onclick="setMode('word')" />
+      </div>
+      <div class="key-row">
+        <input class="key" type="button" value="{{ k11 }}" onclick="append(k11)" />
+        <input class="key" type="button" value="{{ k12 }}" onclick="append(k12)" />
+        <input class="key" type="button" value="{{ k13 }}" onclick="append(k13)" />
+        <input class="key" type="button" value="{{ k14 }}" onclick="append(k14)" />
+        <input class="key" type="button" value="{{ k15 }}" onclick="append(k15)" />
+        <input class="key" type="button" value="{{ k16 }}" onclick="append(k16)" />
+        <input class="key" type="button" value="{{ k17 }}" onclick="append(k17)" />
+        <input class="key" type="button" value="{{ k18 }}" onclick="append(k18)" />
+        <input class="key" type="button" value="{{ k19 }}" onclick="append(k19)" />
+        <input class="key" type="button" value="{{ k110 }}" onclick="append(k110)" />
+      </div>
+      <div class="key-row">
+        <input class="key" type="button" value="{{ k21 }}" onclick="append(k21)" />
+        <input class="key" type="button" value="{{ k22 }}" onclick="append(k22)" />
+        <input class="key" type="button" value="{{ k23 }}" onclick="append(k23)" />
+        <input class="key" type="button" value="{{ k24 }}" onclick="append(k24)" />
+        <input class="key" type="button" value="{{ k25 }}" onclick="append(k25)" />
+        <input class="key" type="button" value="{{ k26 }}" onclick="append(k26)" />
+        <input class="key" type="button" value="{{ k27 }}" onclick="append(k27)" />
+        <input class="key" type="button" value="{{ k28 }}" onclick="append(k28)" />
+        <input class="key" type="button" value="{{ k29 }}" onclick="append(k29)" />
+        <input class="key" type="button" value="{{ k210 }}" onclick="append(k210)" />
+      </div>
+      <div class="key-row">
+        <input class="key" type="button" value="{{ k31 }}" onclick="append(k31)" />
+        <input class="key" type="button" value="{{ k32 }}" onclick="append(k32)" />
+        <input class="key" type="button" value="{{ k33 }}" onclick="append(k33)" />
+        <input class="key" type="button" value="{{ k34 }}" onclick="append(k34)" />
+        <input class="key" type="button" value="{{ k35 }}" onclick="append(k35)" />
+        <input class="key" type="button" value="{{ k36 }}" onclick="append(k36)" />
+        <input class="key" type="button" value="{{ k37 }}" onclick="append(k37)" />
+        <input class="key" type="button" value="{{ k38 }}" onclick="append(k38)" />
+        <input class="key" type="button" value="{{ k39 }}" onclick="append(k39)" />
+        <input class="key" type="button" value="{{ k310 }}" onclick="append(k310)" />
+      </div>
+      <div class="key-row">
+        <input class="wide-key" type="button" value="space" onclick="appendSpace" />
+        <input class="wide-key" type="button" value="newline" onclick="appendNewline" />
+        <input class="wide-key" type="button" value="del" onclick="deleteChar" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+
+export default {
+  private: {
+    code: "",
+    d1_1: "", d1_2: "", d1_3: "", d1_4: "", d1_5: "", d1_6: "", d1_7: "", d1_8: "", d1_9: "", d1_10: "", d1_11: "", d1_12: "", d1_13: "", d1_14: "", d1_15: "", d1_16: "", d1_17: "", d1_18: "", d1_19: "", d1_20: "",
+    d2_1: "", d2_2: "", d2_3: "", d2_4: "", d2_5: "", d2_6: "", d2_7: "", d2_8: "", d2_9: "", d2_10: "", d2_11: "", d2_12: "", d2_13: "", d2_14: "", d2_15: "", d2_16: "", d2_17: "", d2_18: "", d2_19: "", d2_20: "",
+    d3_1: "", d3_2: "", d3_3: "", d3_4: "", d3_5: "", d3_6: "", d3_7: "", d3_8: "", d3_9: "", d3_10: "", d3_11: "", d3_12: "", d3_13: "", d3_14: "", d3_15: "", d3_16: "", d3_17: "", d3_18: "", d3_19: "", d3_20: "",
+    d4_1: "", d4_2: "", d4_3: "", d4_4: "", d4_5: "", d4_6: "", d4_7: "", d4_8: "", d4_9: "", d4_10: "", d4_11: "", d4_12: "", d4_13: "", d4_14: "", d4_15: "", d4_16: "", d4_17: "", d4_18: "", d4_19: "", d4_20: "",
+    d5_1: "", d5_2: "", d5_3: "", d5_4: "", d5_5: "", d5_6: "", d5_7: "", d5_8: "", d5_9: "", d5_10: "", d5_11: "", d5_12: "", d5_13: "", d5_14: "", d5_15: "", d5_16: "", d5_17: "", d5_18: "", d5_19: "", d5_20: "",
+    keyboardOpen: true,
+    mode: "abc",
+    k11: "", k12: "", k13: "", k14: "", k15: "", k16: "", k17: "", k18: "", k19: "", k110: "",
+    k21: "", k22: "", k23: "", k24: "", k25: "", k26: "", k27: "", k28: "", k29: "", k210: "",
+    k31: "", k32: "", k33: "", k34: "", k35: "", k36: "", k37: "", k38: "", k39: "", k310: ""
+  },
+
+  onInit() {
+    this.code = this.$app.$def.manualCode || ""
+    this.refreshDisplay()
+    this.updateRows()
+  },
+
+  refreshDisplay() {
+    const text = this.code || "// tap keys below to enter JS code"
+    const maxCols = 20
+    const chunks = []
+    text.split("\n").forEach((line) => {
+      if (line.length === 0) {
+        chunks.push(" ")
+        return
+      }
+      for (let i = 0; i < line.length; i += maxCols) {
+        chunks.push(line.slice(i, i + maxCols))
+      }
+    })
+    const visible = chunks.slice(Math.max(0, chunks.length - 5))
+    for (let row = 1; row <= 5; row++) {
+      const line = visible[row - 1] || ""
+      for (let col = 1; col <= maxCols; col++) {
+        const ch = line.charAt(col - 1)
+        this[`d${row}_${col}`] = ch === " " ? " " : ch
+      }
+    }
+  },
+  updateRows() {
+    if (this.mode === "ABC") {
+      this.setKeys("QWERTYUIOP".split(""), "ASDFGHJKL".split(""), "ZXCVBNM".split(""))
+    } else if (this.mode === "num") {
+      this.setKeys("1234567890".split(""), [".", ",", ":", ";", "_", "-"], ["+", "*", "/", "%", "=", "!"])
+    } else if (this.mode === "sym") {
+      this.setKeys(["(", ")", "{", "}", "[", "]"], ["'", '"', "`", "\\", "|"], ["<", ">", "?", "&", "@", "#"])
+    } else if (this.mode === "word") {
+      this.setKeys(["con", "let", "var"], ["ret", "log", "req"], ["fn", "=>", "Pr"])
+    } else {
+      this.setKeys("qwertyuiop".split(""), "asdfghjkl".split(""), "zxcvbnm".split(""))
+    }
+  },
+
+  setKeys(row1, row2, row3) {
+    const setRow = (row, prefix) => {
+      for (let i = 0; i < 10; i++) {
+        this[`${prefix}${i + 1}`] = row[i] || ""
+      }
+    }
+    setRow(row1, "k1")
+    setRow(row2, "k2")
+    setRow(row3, "k3")
+  },
+
+  setMode(name) {
+    this.mode = name
+    this.updateRows()
+  },
+
+  append(value) {
+    if (!value) return
+    value = this.expandKey(value)
+    this.code += value
+    this.refreshDisplay()
+  },
+
+  expandKey(value) {
+    if (this.mode !== "word") return value
+    const map = {
+      con: "const ",
+      let: "let ",
+      var: "var ",
+      ret: "return ",
+      log: "console.log()",
+      req: "require(\"\")",
+      fn: "function ",
+      "=>": "=>",
+      Pr: "new Promise"
+    }
+    return map[value] || value
+  },
+
+  appendSpace() {
+    this.code += " "
+    this.refreshDisplay()
+  },
+
+  appendNewline() {
+    this.code += "\n"
+    this.refreshDisplay()
+  },
+
+  deleteChar() {
+    if (this.code.length > 0) this.code = this.code.slice(0, -1)
+    this.refreshDisplay()
+  },
+
+  clearCode() {
+    this.code = ""
+    this.refreshDisplay()
+  },
+
+  toggleKeyboard() {
+    this.keyboardOpen = !this.keyboardOpen
+  },
+
+  runCode() {
+    this.$app.$def.manualCode = this.code
+    router.push({
+      uri: "/pages/run",
+      params: {demo: "__manual__"}
+    })
+  },
+
+  goBack() {
+    this.$app.$def.manualCode = this.code
+    router.back()
+  },
+
+  onBackPress() {
+    this.goBack()
+    return true
+  }
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+.code-scroll {
+  width: 100%;
+  height: 36%;
+  flex-direction: column;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.code-frame {
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.code-box {
+  width: 76%;
+  min-height: 96%;
+  flex-direction: column;
+  padding: 4%;
+  border-radius: 5%;
+  background-color: #1e1e1e;
+}
+
+.code-line {
+  width: 100%;
+  height: 18%;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 1%;
+}
+
+.code-cell {
+  width: 4%;
+  height: 100%;
+  font-size: 16px;
+  color: #d4d4d4;
+  text-align: left;
+}
+
+.toolbar {
+  width: 100%;
+  height: 14%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 6%;
+}
+
+.tool {
+  width: 10%;
+  height: 50%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 50%;
+  font-size: 22px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.grey {
+  background-color: #555555;
+}
+
+.blue {
+  background-color: #0faeff;
+}
+
+.keyboard {
+  width: 100%;
+  height: 40%;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
+.mode-row,
+.key-row {
+  width: 100%;
+  height: 18%;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.mode {
+  width: 18%;
+  height: 92%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 50%;
+  font-size: 17px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #333333;
+}
+
+.key {
+  width: 9.3%;
+  height: 100%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border-radius: 22%;
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #292929;
+}
+
+.wide-key {
+  width: 30%;
+  height: 100%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 50%;
+  font-size: 17px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #333333;
+}
+
+
+</style>

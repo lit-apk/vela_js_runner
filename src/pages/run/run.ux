@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <scroll class="output" scroll-y="true" bounces="true">
-      <text class="title">{{ demo }}.js</text>
+      <text class="title">{{ title }}</text>
       <text class="status">{{ statusText }}</text>
 
       <div class="card" if="{{ logs.length > 0 }}">
@@ -40,6 +40,7 @@ export default {
 
   private: {
     statusText: "",
+    title: "",
     logs: [],
     value: "",
     error: "",
@@ -53,7 +54,12 @@ export default {
   },
 
   findCode() {
+    if (this.demo === "__manual__") {
+      this.title = "manual code"
+      return this.$app.$def.manualCode || ""
+    }
     const match = demos.find((d) => d.name === this.demo)
+    this.title = match ? match.file : `${this.demo}.js`
     return match ? match.code : null
   },
 

@@ -37,6 +37,9 @@
       "pages/index": {
         "component": "index"
       },
+      "pages/editor": {
+        "component": "editor"
+      },
       "pages/run": {
         "component": "run"
       }

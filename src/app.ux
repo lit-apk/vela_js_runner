@@ -1,5 +1,9 @@
 <script>
 export default {
+  private: {
+    manualCode: "console.log(\"hello\")\nreturn 1 + 2"
+  },
+
   onCreate() {
     console.log("[runner] app created")
   },

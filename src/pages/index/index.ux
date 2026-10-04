@@ -4,6 +4,8 @@
       <text class="title">JS Runner</text>
       <text class="subtitle">{{ demos.length }} demo file(s) in src/demo</text>
 
+      <input class="editor-button" type="button" value="Enter JS code" onclick="openEditor" />
+
       <text class="empty" if="{{ demos.length === 0 }}">
         No demos found. Add .js files under src/demo and rebuild.
       </text>
@@ -30,6 +32,10 @@ export default {
 
   onInit() {
     this.demos = demos.map((d) => ({name: d.name, file: d.file}))
+  },
+
+  openEditor() {
+    router.push({uri: "/pages/editor"})
   },
 
   runDemo(item) {
@@ -79,6 +85,17 @@ export default {
   text-align: center;
   color: #888888;
   margin-top: 40px;
+}
+
+.editor-button {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 18px;
+  border-radius: 35px;
+  font-size: 25px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #0faeff;
 }
 
 .demo-button {
